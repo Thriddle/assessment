@@ -80,31 +80,31 @@ class Assessment_Form {
     }
 
     if ( isset( $post_data['first_name'] )) {
-      $this->fields['first_name'] = str_replace( array( "\r", "\n" ),array( " ", " " ), strip_tags( trim( $post_data['first_name'] ) ) );
+      $this->fields['first_name'] = preg_replace( '/\s+/', ' ', strip_tags( trim( $post_data['first_name'] ) ) );
     } else {
       $this->fields['first_name'] = $this->default_values['first_name'];
     }
 
     if ( isset( $post_data['middle_name'] )) {
-      $this->fields['middle_name'] = str_replace( array( "\r", "\n" ),array( " ", " " ), strip_tags( trim( $post_data['middle_name'] ) ) );
+      $this->fields['middle_name'] = preg_replace( '/\s+/', ' ', strip_tags( trim( $post_data['middle_name'] ) ) );
     } else {
       $this->fields['middle_name'] = $this->default_values['middle_name'];
     }
 
     if ( isset( $post_data['last_name'] )) {
-      $this->fields['last_name'] = str_replace( array( "\r", "\n" ),array( " ", " " ), strip_tags( trim( $post_data['last_name'] ) ) );
+      $this->fields['last_name'] = preg_replace( '/\s+/', ' ', strip_tags( trim( $post_data['last_name'] ) ) );
     } else {
       $this->fields['last_name'] = $this->default_values['last_name'];
     }
 
     if ( isset( $post_data['email'] )) {
-      $this->fields['email'] = str_replace( array( "\r", "\n" ),array( " ", " " ), strip_tags( trim( $post_data['email'] ) ) );
+      $this->fields['email'] = preg_replace( '/\s+/', ' ', strip_tags( trim( $post_data['email'] ) ) );
     } else {
       $this->fields['email'] = $this->default_values['email'];
     }
 
     if ( isset( $post_data['country'] )) {
-      $this->fields['country'] = str_replace( array( "\r", "\n" ),array( " ", " " ), strip_tags( trim( $post_data['country'] ) ) );
+      $this->fields['country'] = preg_replace( '/\s+/', ' ', strip_tags( trim( $post_data['country'] ) ) );
     } else {
       $this->fields['country'] = $this->default_values['country'];
     }
@@ -137,19 +137,35 @@ class Assessment_Form {
       $this->messages['errors'][] = "Voornaam is verplicht in te vullen.";
     } elseif ( strlen( $this->fields['first_name'] ) > 256 ) {
       $this->messages['errors'][] = "Voornaam is te lang. Geef een kortere naam op.";
-    }
+    } else {
+			preg_match( '/^[a-zA-Z\s\-\']*$/', $this->fields['first_name'], $matches );
+			// Check if first name does consist of alphabetic characters of dash or single quote (to match names like Jay-Lyn O'Hara)
+			if ( empty( $matches ) ) {
+				$this->messages['errors'][] = "Voornaam bestaat uit niet toegestane karakters.";
+			}
+		}
 
     // Validate the middle name field
     if ( strlen( $this->fields['middle_name'] ) > 256 ) {
       $this->messages['errors'][] = "Tussenvoegsel is te lang. Geef een kortere naam op.";
-    }
+    } else {
+			preg_match( '/^[a-zA-Z\s\-\']*$/', $this->fields['first_name'], $matches );
+			if ( empty( $matches ) ) {
+				$this->messages['errors'][] = "Voornaam bestaat uit niet toegestane karakters.";
+			}
+		}
 
     // Validate the last name field
     if ( ! $this->fields['last_name'] ) {
       $this->messages['errors'][] = "Achternaam is verplicht in te vullen.";
     } elseif ( strlen( $this->fields['last_name'] ) > 256 ) {
       $this->messages['errors'][] = "Achternaam is te lang. Geef een kortere naam op.";
-    }
+    } else {
+			preg_match( '/^[a-zA-Z\s\-\']*$/', $this->fields['first_name'], $matches );
+			if ( empty( $matches ) ) {
+				$this->messages['errors'][] = "Voornaam bestaat uit niet toegestane karakters.";
+			}
+		}
 
     // Validate the email field
     if ( ! $this->fields['email'] ) {
@@ -160,6 +176,7 @@ class Assessment_Form {
 
     // Validate the country field
     if ( ! array_key_exists( $this->fields['country'], $this->get_country_options() ) ) {
+			// shouldn't be possible, user might be messing with the form
       $this->messages['errors'][] = "Sorry, er is een probleem het veld 'land'.";
       $this->fields['country'] = $this->default_values['country'];
     }
@@ -469,16 +486,5 @@ class Assessment_Form {
     return $conutry_options;
 
   }
-
-
-
-
-
-
-
-
-
-
-
 
 }
