@@ -69,7 +69,7 @@ class Assessment_Form {
    * @since   1.0.0
    * @access  public
    * @param   array   $post_data    array with $_POST data
-  */
+   */
 	public function get_form_data( $post_data ) {
 
 
@@ -122,7 +122,7 @@ class Assessment_Form {
    * @since   1.0.0
    * @access  public
    * @return  bool
-  */
+   */
 	public function validate_form_data() {
 
     // Validate the title field
@@ -192,7 +192,7 @@ class Assessment_Form {
    * @since   1.0.0
    * @access  public
    * @return  array
-  */
+   */
 	public function reset_form_data() {
 
     $this->fields['title']       = $this->default_values['title'];
@@ -211,7 +211,7 @@ class Assessment_Form {
    * @since   1.0.0
    * @access  public
    * @return  array
-  */
+   */
 	public function get_title_options() {
 
     $title_options = array(
@@ -232,7 +232,7 @@ class Assessment_Form {
    */
   function get_country_options() {
 
-    $conutry_options = array(
+    $country_options = array(
       "AF" => "Afghanistan",
       "AX" => "Alandeilanden",
       "AL" => "Albanië",
@@ -483,7 +483,7 @@ class Assessment_Form {
       "CH" => "Zwitserland"
     );
 
-    return $conutry_options;
+    return $country_options;
 
   }
 
