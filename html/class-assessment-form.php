@@ -151,7 +151,7 @@ class Assessment_Form {
     } else {
 			preg_match( '/^[a-zA-Z\s\-\']*$/', $this->fields['first_name'], $matches );
 			if ( empty( $matches ) ) {
-				$this->messages['errors'][] = "Voornaam bestaat uit niet toegestane karakters.";
+				$this->messages['errors'][] = "Tussenvoegsel bestaat uit niet toegestane karakters.";
 			}
 		}
 
@@ -163,7 +163,7 @@ class Assessment_Form {
     } else {
 			preg_match( '/^[a-zA-Z\s\-\']*$/', $this->fields['first_name'], $matches );
 			if ( empty( $matches ) ) {
-				$this->messages['errors'][] = "Voornaam bestaat uit niet toegestane karakters.";
+				$this->messages['errors'][] = "Achternaam bestaat uit niet toegestane karakters.";
 			}
 		}
 
