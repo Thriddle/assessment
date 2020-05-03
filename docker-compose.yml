@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  website:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: apache-pdo:1.0
+    container_name: assess
+    restart: always
+    ports:
+      - "8085:80"
+    volumes:
+      - ./html:/var/www/html
+    environment:
+      - DB_NAME=assessment_20200502
+      - DB_USER=hinkingrosa
+      - DB_PASSWORD=bak4OlcpLOM3qaikQpVn
+      - DB_HOST=db
+    external_links:
+      - db:mysql
+    tty: true
+    networks:
+      - local_localweb
+
+networks:
+  local_localweb:
+    external: true

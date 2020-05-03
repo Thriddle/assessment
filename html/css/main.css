@@ -1,0 +1,125 @@
+html {
+	font-family: 'Roboto', sans-serif;
+}
+
+.contact-form {
+	max-width: 800px;
+	margin: 10em auto;
+}
+
+.contact-form .form-radio,
+.contact-form .form-input,
+.contact-form .form-email,
+.contact-form .form-select,
+.contact-form .form-submit {
+	margin: 1em 0;
+}
+
+.contact-form input[type=text],
+.contact-form input[type=date],
+.contact-form input[type=datetime],
+.contact-form input[type=number],
+.contact-form input[type=search],
+.contact-form input[type=time],
+.contact-form input[type=url],
+.contact-form input[type=email],
+textarea,
+select {
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #3666B2;
+	padding: 7px;
+	margin:0px;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+}
+
+.contact-form input[type=text]:focus,
+.contact-form input[type=date]:focus,
+.contact-form input[type=datetime]:focus,
+.contact-form input[type=number]:focus,
+.contact-form input[type=search]:focus,
+.contact-form input[type=time]:focus,
+.contact-form input[type=url]:focus,
+.contact-form input[type=email]:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+	-moz-box-shadow: 0 0 8px #5676D2;
+	-webkit-box-shadow: 0 0 8px #5676D2;
+	box-shadow: 0 0 8px #5676D2;
+	border: 1px solid #5676D2;
+}
+
+.contact-form .form-radio-group {
+	display: flex;
+	padding-top: 0.4em;
+}
+
+.contact-form .form-input-group {
+	display: flex;
+}
+
+.contact-form .form-radio-item {
+	margin-right: 2em;
+}
+
+.contact-form .form-input {
+	width: 100%;
+}
+
+.contact-form .form-input-item + .form-input-item {
+	margin-left: 1em;
+}
+
+.contact-form input[type=submit],
+.contact-form input[type=button] {
+	background: #3666B2;
+	padding: 8px 15px 8px 15px;
+	border: none;
+	color: #fff;
+}
+
+.contact-form input[type=submit]:hover,
+.contact-form input[type=button]:hover {
+	background: #5676D2;
+	box-shadow:none;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+}
+
+.w40 {
+	width: 40%;
+}
+
+.w20 {
+	width: 20%;
+}
+
+p.error,
+p.warning,
+p.notification {
+	padding: 0.5em 1em;
+}
+
+p.error {
+	background-color: #faa;
+	color: #f00;
+	border: solid 1px #f00;
+}
+
+p.notification {
+	background-color: #afa;
+	color: #060;
+	border: solid 1px #060;
+}
+
+p.warning {
+	background-color: #ff6;
+	color: #000;
+	border: solid 1px #a60;
+}
